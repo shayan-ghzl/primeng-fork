@@ -78,16 +78,16 @@ export class DialogService {
     }
 
     private duplicationPermission(componentType: Type<any>, config: DynamicDialogConfig): boolean {
-        if (config.duplicate) {
-            return true;
-        }
-        let permission = true;
-        for (const [key, value] of this.dialogComponentRefMap) {
-            if (value.instance.childComponentType === componentType) {
-                permission = false;
-                break;
+        if (config.preventDuplication) {
+            let permission = true;
+            for (const [key, value] of this.dialogComponentRefMap) {
+                if (value.instance.childComponentType === componentType) {
+                    permission = false;
+                    break;
+                }
             }
+            return permission;
         }
-        return permission;
+        return true;
     }
 }

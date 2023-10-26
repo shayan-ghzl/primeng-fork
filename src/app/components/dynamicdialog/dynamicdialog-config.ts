@@ -157,5 +157,5 @@ export class DynamicDialogConfig<T = any> {
      * A boolean to determine if it can be duplicate.
      * @group Props
      */
-    duplicate?: boolean;
+    preventDuplication?: boolean;
 }
